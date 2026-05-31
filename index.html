@@ -1,0 +1,902 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Claire ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ff4f81,#ff8fab);
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    z-index:10;
+    padding:20px;
+}
+
+h1{
+    font-size:4rem;
+    text-shadow:0 0 20px rgba(255,255,255,.7);
+}
+
+.subtitle{
+    margin-top:10px;
+    font-size:1.3rem;
+}
+
+.heart{
+    position:absolute;
+    color:#fff;
+    font-size:20px;
+    animation:float linear infinite;
+    opacity:.8;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+}
+
+.btn{
+    margin-top:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4f81;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.3s;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+}
+
+.message-box{
+    margin-top:25px;
+    font-size:1.3rem;
+    min-height:70px;
+}
+
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:white;
+    color:#333;
+    width:90%;
+    max-width:500px;
+    padding:30px;
+    border-radius:20px;
+    transition:.5s;
+    z-index:100;
+    box-shadow:0 0 30px rgba(0,0,0,.3);
+}
+
+.popup.show{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.popup h2{
+    color:#ff4f81;
+    margin-bottom:15px;
+}
+
+.close{
+    margin-top:20px;
+    background:#ff4f81;
+    color:white;
+}
+
+#surprise{
+    display:none;
+    margin-top:20px;
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.big-heart{
+    font-size:90px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+}
+
+.counter{
+    margin-top:20px;
+    font-size:1.2rem;
+}
+
+.glow{
+    animation:glow 2s infinite;
+}
+
+@keyframes glow{
+    0%,100%{
+        text-shadow:0 0 10px white;
+    }
+    50%{
+        text-shadow:
+        0 0 20px white,
+        0 0 40px white;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1 class="glow">Claire ❤️</h1>
+
+    <p class="subtitle">
+        Every moment feels brighter because you're in my life.
+    </p>
+
+    <div class="message-box" id="message"></div>
+
+    <button class="btn" onclick="showLetter()">
+        Open My Heart 💌
+    </button>
+
+    <button class="btn" onclick="showSurprise()">
+        Surprise Me ❤️
+    </button>
+
+    <button class="btn" onclick="nextMessage()">
+        Romantic Message 🌹
+    </button>
+
+    <div class="counter">
+        ❤️ Heart Clicks: <span id="count">0</span>
+    </div>
+
+    <div id="surprise">
+        <div class="big-heart">❤️</div>
+        <h2>You make ordinary days feel magical.</h2>
+    </div>
+
+</div>
+
+<div class="popup" id="popup">
+
+    <h2>My Letter To You ❤️</h2>
+
+    <p>
+        Claire,
+
+        There are people we meet and never forget,
+        and then there are people who quietly become
+        the most beautiful part of our days.
+
+        Your smile has a way of making everything
+        feel lighter. Your presence brings peace,
+        happiness and warmth that words can hardly
+        describe.
+
+        I don't know what tomorrow holds,
+        but I know that today I feel lucky
+        to have you in my life.
+
+        Thank you for being you. ❤️
+    </p>
+
+    <button class="btn close" onclick="closeLetter()">
+        Close ❤️
+    </button>
+
+</div>
+
+<script>
+
+// Floating hearts
+function createHeart(){
+    const heart=document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*30+15)+"px";
+    heart.style.animationDuration=(Math.random()*6+4)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
+
+setInterval(createHeart,300);
+
+// Popup
+function showLetter(){
+    document.getElementById("popup").classList.add("show");
+}
+
+function closeLetter(){
+    document.getElementById("popup").classList.remove("show");
+}
+
+// Romantic messages
+const messages=[
+"Your smile is my favorite notification ❤️",
+"If beauty had a name, it would be Claire 🌹",
+"Every heartbeat whispers your name ❤️",
+"You are my happy place ✨",
+"My day instantly becomes better when I think about you 💕",
+"You are the reason behind many of my smiles 😊❤️",
+"Some people are poems. You're one of them 🌹"
+];
+
+let index=0;
+
+function nextMessage(){
+
+    document.getElementById("message").innerHTML=
+    messages[index];
+
+    index++;
+
+    if(index>=messages.length){
+        index=0;
+    }
+
+    count++;
+    document.getElementById("count").textContent=count;
+}
+
+let count=0;
+
+function showSurprise(){
+
+    document.getElementById("surprise").style.display="block";
+
+    count++;
+    document.getElementById("count").textContent=count;
+
+    createBurst();
+}
+
+// Heart burst effect
+function createBurst(){
+
+    for(let i=0;i<30;i++){
+
+        const heart=document.createElement("div");
+
+        heart.innerHTML="❤️";
+        heart.style.position="fixed";
+        heart.style.left="50%";
+        heart.style.top="50%";
+        heart.style.fontSize="25px";
+        heart.style.pointerEvents="none";
+
+        const x=(Math.random()-0.5)*800;
+        const y=(Math.random()-0.5)*800;
+
+        heart.style.transition="1.5s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.style.transform=
+            `translate(${x}px,${y}px) scale(0)`;
+            heart.style.opacity="0";
+        },50);
+
+        setTimeout(()=>{
+            heart.remove();
+        },1500);
+    }
+}
+
+// Auto typing intro
+const intro=
+"Claire, this little corner of the internet was made especially for you ❤️";
+
+let i=0;
+
+function typeText(){
+
+    if(i<intro.length){
+
+        document.getElementById("message").innerHTML += intro.charAt(i);
+
+        i++;
+
+        setTimeout(typeText,50);
+    }
+}
+
+typeText();
+
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claire ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(
+135deg,
+#0f172a,
+#1e293b,
+#172554
+);
+overflow-x:hidden;
+color:white;
+min-height:100vh;
+}
+
+/* Stars */
+
+.star{
+position:fixed;
+background:#fff;
+border-radius:50%;
+opacity:.9;
+box-shadow:
+0 0 6px #fff,
+0 0 12px #fff;
+animation:twinkle 2s infinite alternate;
+z-index:0;
+}
+@keyframes twinkle{
+from{opacity:.2}
+to{opacity:1}
+}
+
+/* Floating Hearts */
+
+.heart{
+position:fixed;
+font-size:20px;
+animation:floatUp linear forwards;
+pointer-events:none;
+z-index:1;
+}
+
+@keyframes floatUp{
+to{
+transform:translateY(-110vh) rotate(360deg);
+opacity:0;
+}
+}
+
+.container{
+position:relative;
+z-index:5;
+padding:30px;
+max-width:1000px;
+margin:auto;
+text-align:center;
+}
+
+.hero{
+margin-top:60px;
+}
+
+.hero h1{
+font-size:4rem;
+color:#fff;
+text-shadow:
+0 0 10px rgba(232,165,152,.6),
+0 0 30px rgba(232,165,152,.4),
+0 0 60px rgba(232,165,152,.2);
+}
+.hero p{
+font-size:1.3rem;
+margin-top:15px;
+}
+
+.glass{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
+border:1px solid rgba(232,165,152,0.25);
+padding:25px;
+border-radius:25px;
+margin-top:30px;
+box-shadow:
+0 10px 40px rgba(0,0,0,.4),
+0 0 20px rgba(232,165,152,.1);
+}
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:1rem;
+margin:10px;
+background:#e8a598;
+color:#0f172a;
+font-weight:bold;
+transition:.3s;
+box-shadow:
+0 0 20px rgba(232,165,152,.35);
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+#typing{
+font-size:1.4rem;
+min-height:80px;
+}
+
+.timeline{
+text-align:left;
+margin-top:20px;
+}
+
+.timeline-item{
+padding:15px;
+margin:10px 0;
+background:rgba(255,255,255,.08);
+border-radius:15px;
+}
+
+.note{
+display:inline-block;
+margin:10px;
+padding:20px;
+background:rgba(232,165,152,.15);
+color:#fff;
+border:1px solid rgba(232,165,152,.4);
+border-radius:15px;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+
+.note:hover{
+transform:translateY(-5px);
+}
+
+.hidden-message{
+display:none;
+margin-top:20px;
+font-size:1.3rem;
+}
+
+.game-area{
+height:300px;
+position:relative;
+overflow:hidden;
+border-radius:20px;
+background:rgba(255,255,255,.08);
+margin-top:20px;
+}
+
+.catch-heart{
+position:absolute;
+font-size:35px;
+cursor:pointer;
+}
+
+.score{
+font-size:1.3rem;
+margin-top:10px;
+}
+
+.countdown{
+font-size:1.5rem;
+margin-top:15px;
+}
+
+.firework{
+position:fixed;
+font-size:25px;
+pointer-events:none;
+z-index:1000;
+}
+
+footer{
+padding:40px;
+font-size:1.2rem;
+}
+
+@media(max-width:700px){
+.hero h1{
+font-size:2.8rem;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+<h1>Claire ❤️</h1>
+<p>
+"In all the stars above,
+my favorite light is still your smile."
+</p>
+</div>
+
+<div class="glass">
+<h2>A Message For You 💌</h2>
+<div id="typing"></div>
+</div>
+
+<div class="glass">
+<h2>Our Little Story 🌹</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+✨ The day we met became a beautiful memory.
+</div>
+
+<div class="timeline-item">
+😊 Every conversation brought a new smile.
+</div>
+
+<div class="timeline-item">
+❤️ Somewhere along the way, you became special.
+</div>
+
+<div class="timeline-item">
+🌹 Today, you remain one of my favorite people.
+</div>
+
+</div>
+</div>
+
+<div class="glass">
+<h2>Open Love Notes 💝</h2>
+
+<div class="note" onclick="showNote(0)">
+Note 1
+</div>
+
+<div class="note" onclick="showNote(1)">
+Note 2
+</div>
+
+<div class="note" onclick="showNote(2)">
+Note 3
+</div>
+
+<div class="hidden-message" id="noteMessage"></div>
+</div>
+
+<div class="glass">
+<h2>Secret Message 🔐</h2>
+
+<p>Enter the magic word:</p>
+
+<input
+id="secretInput"
+placeholder="Hint: starts with L"
+style="
+padding:12px;
+border:none;
+border-radius:20px;
+margin-top:10px;
+width:250px;
+">
+
+<br>
+
+<button onclick="unlockSecret()">
+Unlock
+</button>
+
+<div class="hidden-message" id="secretMessage">
+❤️ Claire, if I could choose one place to be,
+it would always be wherever you are. ❤️
+</div>
+
+</div>
+
+<div class="glass">
+
+<h2>Catch My Heart Game ❤️</h2>
+
+<div class="score">
+Score:
+<span id="score">0</span>
+</div>
+
+<div class="game-area" id="gameArea"></div>
+
+<button onclick="startGame()">
+Start Game
+</button>
+
+</div>
+
+<div class="glass">
+
+<h2>Time Since We Met ⏳</h2>
+
+<div class="countdown" id="counter"></div>
+
+</div>
+
+<div class="glass">
+
+<h2>Celebrate Us 🎆</h2>
+
+<button onclick="fireworks()">
+Launch Fireworks
+</button>
+
+<button onclick="toggleMusic()">
+Music 🎵
+</button>
+
+</div>
+
+<footer>
+Made with ❤️ for Claire @Mrs Naptile
+</footer>
+
+</div>
+
+<audio id="music" loop>
+<source src="romantic-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Stars */
+
+for(let i=0;i<100;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.width=Math.random()*3+"px";
+star.style.height=star.style.width;
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+document.body.appendChild(star);
+}
+
+/* Hearts */
+
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.bottom="-20px";
+h.style.fontSize=(20+Math.random()*25)+"px";
+h.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),10000);
+},300);
+
+/* Typewriter */
+
+const text=
+"Claire, some people enter our lives quietly and somehow make everything feel more beautiful. Thank you for every smile, every conversation and every wonderful moment.";
+
+let idx=0;
+
+function typeWriter(){
+
+if(idx<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(idx);
+idx++;
+setTimeout(typeWriter,40);
+}
+
+}
+
+typeWriter();
+
+/* Notes */
+
+const notes=[
+"❤️ You have the most beautiful smile.",
+"🌹 Thinking about you makes my day better.",
+"✨ You're one of the best things that happened to me."
+];
+
+function showNote(i){
+let box=document.getElementById("noteMessage");
+box.style.display="block";
+box.innerHTML=notes[i];
+}
+
+/* Secret */
+
+function unlockSecret(){
+
+let value=
+document.getElementById("secretInput")
+.value.toLowerCase();
+
+if(value==="love"){
+document.getElementById("secretMessage")
+.style.display="block";
+}
+else{
+alert("Try again ❤️");
+}
+
+}
+
+/* Game */
+
+let score=0;
+
+function startGame(){
+
+const area=document.getElementById("gameArea");
+
+const interval=setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="catch-heart";
+heart.innerHTML="❤️";
+
+heart.style.left=
+Math.random()*90+"%";
+
+heart.style.top=
+Math.random()*80+"%";
+
+heart.onclick=()=>{
+
+score++;
+
+document.getElementById("score")
+.innerText=score;
+
+heart.remove();
+
+};
+
+area.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},1500);
+
+},500);
+
+setTimeout(()=>{
+clearInterval(interval);
+alert("Game Over ❤️");
+},15000);
+
+}
+
+/* Counter */
+
+const startDate=
+new Date("2026-01-01");
+
+function updateCounter(){
+
+let now=new Date();
+
+let diff=
+now-startDate;
+
+let days=
+Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("counter")
+.innerHTML=
+days+" days of beautiful memories ❤️";
+
+}
+
+updateCounter();
+setInterval(updateCounter,1000);
+
+/* Fireworks */
+
+function fireworks(){
+
+for(let i=0;i<100;i++){
+
+let f=document.createElement("div");
+
+f.className="firework";
+
+f.innerHTML=["❤️","✨","🌹","💕"][Math.floor(Math.random()*4)];
+
+f.style.left="50%";
+f.style.top="50%";
+
+document.body.appendChild(f);
+
+let x=(Math.random()-0.5)*1200;
+let y=(Math.random()-0.5)*800;
+
+setTimeout(()=>{
+f.style.transition="1.5s";
+f.style.transform=
+`translate(${x}px,${y}px)`;
+f.style.opacity="0";
+},10);
+
+setTimeout(()=>{
+f.remove();
+},2000);
+
+}
+
+}
+
+/* Music */
+
+function toggleMusic(){
+
+const music=
+document.getElementById("music");
+
+if(music.paused){
+music.play();
+}
+else{
+music.pause();
+}
+
+}
+
+</script>
+
+</body>
+</html>
